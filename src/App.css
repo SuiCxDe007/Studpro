@@ -38,3 +38,27 @@
     transform: rotate(360deg);
   }
 }
+
+.row {
+  display: flex;
+  flex-wrap:wrap;
+  }
+.cardImage {
+  /* objectFit: 'cover';
+  borderRadius: 55; */
+  width: '50vw';
+  height: '30vh';
+}
+
+.BeerListItem-main-card {
+  width: 320px;
+  height: 320px;
+}
+
+.BeerListItem-img {
+  height: auto;
+  max-height: 250px;
+  width: auto;
+  max-width: 250px;
+  align-items: center;
+}

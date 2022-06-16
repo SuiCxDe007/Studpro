@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Container, Navbar,Nav } from 'react-bootstrap';
+import { Container, Navbar,Nav, NavDropdown } from 'react-bootstrap';
 
 import "./App.css";
 import { db} from "./firebase-config";
@@ -12,6 +12,15 @@ import {
   deleteDoc,
   doc,
 } from "firebase/firestore";
+
+import CarouselContainer from "./Components/CarouselContainer";
+import CompanyCards from "./Components/CompanyCards";
+
+
+import logo from './assets/images/logo.jpg';
+import Album from "./Components/Copyright";
+
+// import NavbarContainer from "./Components/NavbarContainer";
 
 function App() {
   
@@ -55,16 +64,37 @@ function App() {
 
   return (
     <div>
+      {/* <NavbarContainer/> */}
+
       <Navbar bg="light" variant="light">
         <Container>
-        <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+        <Navbar.Brand href="#home">
+          <img
+            src={logo}
+            width="40"
+            height="40"
+            className="d-inline-block align-top"
+            alt="React Bootstrap logo"
+          />
+        </Navbar.Brand>
+        <Navbar.Brand href="#home">Studpro 5.0</Navbar.Brand>
         <Nav className="me-auto">
-          <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="#features">Features</Nav.Link>
-          <Nav.Link href="#pricing">Pricing</Nav.Link>
+          <Nav.Link href="#home">About Us</Nav.Link>
+          <NavDropdown href="#features" title= 'past events'>
+            <NavDropdown.Item href="#action/3.1">Studpro 1.0</NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.2">Studpro 2.0</NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.3">Studpro 3.0</NavDropdown.Item>
+            {/* <NavDropdown.Divider /> */}
+            <NavDropdown.Item href="#action/3.4">Studpro 4.0</NavDropdown.Item>
+          </NavDropdown>        
+          <Nav.Link href="#pricing">Contact us</Nav.Link>
         </Nav>
         </Container>
       </Navbar>
+
+      <CarouselContainer/>
+      {/* <CompanyCards/> */}
+      <Album/>
       <input
         placeholder="Name..."
         onChange={(event) => {
@@ -124,7 +154,7 @@ function App() {
         );
       }
       )}
-      {/* <h1>vyvhk</h1> */}
+      <h1>vyvhk</h1>
       
       
     </div>
