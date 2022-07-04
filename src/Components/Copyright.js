@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import CameraIcon from '@mui/icons-material/PhotoCamera';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
+import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -84,14 +85,7 @@ function Album() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AppBar position="relative">
-        <Toolbar>
-          <CameraIcon sx={{ mr: 2 }} />
-          <Typography variant="h6" color="inherit" noWrap>
-            Album layout
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      
       <main>
         {/* Hero unit */}
         <Box
@@ -109,7 +103,7 @@ function Album() {
               color="text.primary"
               gutterBottom
             >
-              Album layout
+              Studpro 5.0
             </Typography>
             <Typography variant="h5" align="center" color="text.secondary" paragraph>
               Something short and leading about the collection below—its contents,
@@ -132,32 +126,25 @@ function Album() {
           <Grid container spacing={4}>
             {companys.map((item, idx) => (
               <Grid item key={item.logo} xs={12} sm={6} md={4}>
-                <Card
-                  sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
-                >
+                <Card sx={{ maxWidth: 345 }}>
+                <CardActionArea>
                   <CardMedia
                     component="img"
-                    sx={{
-                      // 16:9
-                      pt: '50%',
-                    }}
+                    height="200"
                     image={item.logo}
-                    alt="random"
+                    alt="green iguana"
                   />
-                  <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                    {item.name}
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="div" align="center">
+                      {item.name}
                     </Typography>
-                    <Typography>
-                      This is a media card. You can use this section to describe the
-                      content.
+                    <Typography variant="body2" color="text.secondary">
+                      {item.details}
                     </Typography>
                   </CardContent>
-                  <CardActions>
-                    <Button size="small">View</Button>
-                    <Button size="small">Edit</Button>
-                  </CardActions>
-                </Card>
+                </CardActionArea>
+                
+              </Card>
               </Grid>
             ))}
           </Grid>
