@@ -16,6 +16,10 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
+import Divider from '@mui/material/Divider';
+import Chip from '@mui/material/Chip';
+
+
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
@@ -68,9 +72,11 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const theme = createTheme();
 function Album() {
 
-  const [companys, setCompanys] = useState([]); 
+  const [companys, setCompanys] = useState([]);
+  const [participants, setParticipants] = useState([]);
 
     const CompanyColltectionRef  = collection(db,"Sponsors");
+    const ParticipantColltectionRef = collection(db,"Participant");
 
     useEffect(() => {
         
@@ -78,10 +84,16 @@ function Album() {
           const data = await getDocs(CompanyColltectionRef);
           setCompanys(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
         };
+        const getParticipants = async () => {
+          const data = await getDocs(ParticipantColltectionRef);
+          setParticipants(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+        };
     
-        
+        getParticipants();
         getCompany();
-      }, [CompanyColltectionRef]);
+      }, [CompanyColltectionRef,ParticipantColltectionRef]);
+
+      
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -116,11 +128,50 @@ function Album() {
               spacing={2}
               justifyContent="center"
             >
-              <Button variant="contained">Main call to action</Button>
-              <Button variant="outlined">Secondary action</Button>
+
+              {/* <Button variant="contained">Main call to action</Button>
+              <Button variant="outlined">Secondary action</Button> */}
+            {participants.map((item, idx) => (
+              <Grid item key={item.logo} xs={12} sm={6} md={4}>
+              <Card sx={{ width: 300 , maxHeight: 345}} style={{ backgroundImage: `url(${item.image})`}}>
+                <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                <CardContent sx={{ flex: '1 0 auto' }}>
+                  
+                  <Typography component="div" variant="h5" align="center">
+                    {item.Name}
+                  </Typography>
+                  <div>
+                  <Typography variant="subtitle1" color="blue" component="div" sx={{ fontWeight: 'bold',height:40, mb:3 }} align="center">
+                    {item.Question}
+                  </Typography>
+                  </div>
+                  <Divider />
+                  <Typography component="div" variant="p" align="center">
+                    {item.Field1}
+                  </Typography>
+                  <Divider/>
+                  <Typography component="div" variant="p" align="center" >
+                    {item.Field2}
+                  </Typography>
+                  <Divider/>
+                  <Typography component="div" variant="p" align="center">
+                    {item.Field3}
+                  </Typography>
+
+                </CardContent>
+                
+                <Button variant="contained" >{item.Button}</Button>
+              </Box>
+              </Card>
+              </Grid>))}
             </Stack>
           </Container>
         </Box>
+
+        <Divider>
+          <Chip label="Company Partnership" size= "medium" />
+        </Divider>
+
         <Container sx={{ py: 8 }} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
