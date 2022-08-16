@@ -31,9 +31,11 @@ function App() {
 
   const [users, setUsers] = useState([]);
   const [companys, setCompanys] = useState([]);
+  const [images, setImages] = useState([]);
 
   const usersCollectionRef = collection(db, "users");
   const CompanyColltectionRef  = collection(db,"Sponsors");
+  const ImagesColltectionRef  = collection(db,"Images");
 
   const createUser = async () => {
     await addDoc(usersCollectionRef, { name: newName, age: Number(newAge) });
@@ -59,27 +61,36 @@ function App() {
       const data = await getDocs(CompanyColltectionRef);
       setCompanys(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
+    const getImages = async () => {
+      const data = await getDocs(ImagesColltectionRef);
+      setImages(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      console.log(data);
+    };
 
     getUsers();
     getCompany();
-  }, [usersCollectionRef,CompanyColltectionRef]);
+    getImages();
+  }, [usersCollectionRef,CompanyColltectionRef,ImagesColltectionRef]);
 
   return (
     <div>
       {/* <NavbarContainer/> */}
 
-      <Navbar bg="light" variant="light">
+      <Navbar bg="light" variant="light" className="navbar" collapseOnSelect expand="lg">
         <Container>
         <Navbar.Brand href="#home">
+        {images.map((item, idx) => (
           <img
-            src={logo}
-            width="40"
-            height="40"
+            src={item.Studprologo}
+            width="120"
+            height="60"
             className="d-inline-block align-top"
             alt="React Bootstrap logo"
-          />
+          />))}
         </Navbar.Brand>
-        <Navbar.Brand href="#home">Studpro 5.0</Navbar.Brand>
+        {/* <Navbar.Brand href="#home">Studpro 5.0</Navbar.Brand> */}
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto">
           <Nav.Link href="#home">About Us</Nav.Link>
           <NavDropdown href="#features" title= 'past events'>
@@ -91,8 +102,11 @@ function App() {
           </NavDropdown>        
           <Nav.Link href="#pricing">Contact us</Nav.Link>
         </Nav>
+        </Navbar.Collapse>
         </Container>
+        
       </Navbar>
+      
 
       <CarouselContainer/>
       <Album/>
