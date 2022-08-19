@@ -110,7 +110,7 @@ function App() {
 
       <CarouselContainer/>
       <Album/>
-      <FooterContainer />
+      
     </div>
   );
 }

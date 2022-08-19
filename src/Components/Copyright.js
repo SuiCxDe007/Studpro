@@ -18,6 +18,7 @@ import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import Divider from '@mui/material/Divider';
 import Chip from '@mui/material/Chip';
+import { Avatar } from '@mui/material';
 
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -178,7 +179,11 @@ function Album() {
             {companys.map((item, idx) => (
               <Grid item key={item.logo} xs={12} sm={6} md={4}>
                 <Card sx={{ maxWidth: 345 }}>
+                  
                 <CardActionArea>
+                  <div className="chipContainer">
+                      <Chip variant="outlined" color="info" avatar={<Avatar>{item.years}</Avatar>} label="Years with us"  />
+                  </div> 
                   <CardMedia
                     component="img"
                     height="200"
@@ -186,6 +191,7 @@ function Album() {
                     alt="green iguana"
                   />
                   <CardContent>
+                  
                     <Typography gutterBottom variant="h5" component="div" align="center">
                       {item.name}
                     </Typography>
