@@ -1,61 +1,82 @@
- <input
-        placeholder="Name..."
-        onChange={(event) => {
-          setNewName(event.target.value);
-        }}
-      />
-      <input
-        type="number"
-        placeholder="Age..."
-        onChange={(event) => {
-          setNewAge(event.target.value);
-        }}
-      />
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+import ReactCardCarousel from "react-card-carousel";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Container, Card, CardGroup, Button } from "react-bootstrap";
 
-      <button onClick={createUser}> Create User</button>
-      {users.map((user) => {
-        return (
-          <div>
-            {" "}
-            <h1>Name: {user.name}</h1>
-            <h1>Age: {user.age}</h1>
-            
-            <button
-              onClick={() => {
-                updateUser(user.id, user.age);
-              }}
-            >
-              {" "}
-              Increase Age
-            </button>
-            <button
-              onClick={() => {
-                deleteUser(user.id);
-              }}
-            >
-              {" "}
-              Delete User
-            </button>
+class MyCarousel extends Component {
+  static get CONTAINER_STYLE() {
+    return {
+      position: "relative",
+      height: "100vh",
+      width: "100%",
+      display: "flex",
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "middle"
+    };
+  }
+
+  static get CARD_STYLE() {
+    return {
+      height: "200px",
+      width: "230px",
+      paddingTop: "0px",
+      textAlign: "center",
+      background: "#52C0F5",
+      color: "",
+      fontFamily: "sans-serif",
+      fontSize: "12px",
+      textTransform: "uppercase",
+      borderRadius: "10px",
+      boxSizing: "border-box"
+    };
+  }
+
+  render() {
+    return (
+      <div style={MyCarousel.CONTAINER_STYLE}>
+        <ReactCardCarousel disable_keydown={true} autoplay_speed={30000}>
+          <div style={MyCarousel.CARD_STYLE}>
+            <CardGroup>
+              <Card style={{ width: "18rem" }}>
+                <Card.Img
+                  variant="top"
+                  src="https://image.shutterstock.com/image-photo/young-happy-woman-balloons-sunset-600w-1310231851.jpg"
+                />
+                <Card.Body>
+                  <Card.Title
+                    style={{ textAlign: "initial", fontSize: "12px" }}
+                  >
+                    <h4 style={{ fontSize: "18px" }}>Hourly Home Care</h4>
+                  </Card.Title>
+                  <Card.Text>
+                    <p>
+                      4x higher coverage limit
+                      <br />
+                      than traditional policies
+                      <br />
+                      for computers and home
+                      <br />
+                      office equipment.
+                    </p>
+                  </Card.Text>
+                </Card.Body>
+                <Card.Footer style={{ height: "40px" }}>
+                  <small className="text-muted"></small>
+                </Card.Footer>
+              </Card>
+            </CardGroup>
           </div>
-        );
-      })}
-      {/* <img 
-      src="https://firebasestorage.googleapis.com/v0/b/website-3feaf.appspot.com/o/4f32b-16486378788659-1920.webp?alt=media&token=2963b3a3-4476-458e-aaed-c2513760344b"
-      alt="new"
-      /> */}
-      {companys.map((company) => {
-        return (
-          <div>
-            {" "}
-            <h1>Name: {company.name}</h1>
-            <img
-            src={company.logo}
-            alt="new"
-            />
-            
-          </div>
-        );
-      }
-      )}
-      <h1>vyvhk</h1>
-      
+          <div style={MyCarousel.CARD_STYLE}>Second Card</div>
+          <div style={MyCarousel.CARD_STYLE}>Third Card</div>
+          <div style={MyCarousel.CARD_STYLE}>Fourth Card</div>
+          <div style={MyCarousel.CARD_STYLE}>Fifth Card</div>
+        </ReactCardCarousel>
+      </div>
+    );
+  }
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<MyCarousel />, rootElement);

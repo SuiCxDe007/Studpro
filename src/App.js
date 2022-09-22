@@ -14,9 +14,11 @@ import {
 } from "firebase/firestore";
 
 import CarouselContainer from "./Components/CarouselContainer";
-import { FooterContainer } from './Components/footer'
-// import CompanyCards from "./Components/CompanyCards";
-
+import Gallery from "./Components/Gallery";
+import Jobs from "./Components/Jobs";
+import Title from "./Components/title"
+import NestedGrid from "./Components/Mainsponsors";
+import Clock from "./Components/Countdown"
 
 
 import logo from './assets/images/logo.jpg';
@@ -83,7 +85,7 @@ function App() {
           <img
             src={item.Studprologo}
             width="120"
-            height="60"
+            height="50"
             className="d-inline-block align-top"
             alt="React Bootstrap logo"
           />))}
@@ -92,24 +94,32 @@ function App() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto">
-          <Nav.Link href="#home">About Us</Nav.Link>
+          <Nav.Link href="#home">Home</Nav.Link>
           <NavDropdown href="#features" title= 'past events'>
             <NavDropdown.Item href="#action/3.1">Studpro 1.0</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.2">Studpro 2.0</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.3">Studpro 3.0</NavDropdown.Item>
             {/* <NavDropdown.Divider /> */}
             <NavDropdown.Item href="#action/3.4">Studpro 4.0</NavDropdown.Item>
-          </NavDropdown>        
+          </NavDropdown>
+          <Nav.Link href="#pricing">Job Opportunity</Nav.Link>     
           <Nav.Link href="#pricing">Contact us</Nav.Link>
+          <Nav.Link href="#pricing">Gallery</Nav.Link>
+
         </Nav>
         </Navbar.Collapse>
         </Container>
         
       </Navbar>
       
-
-      <CarouselContainer/>
-      <Album/>
+      
+      
+      {/* <CarouselContainer/> */}
+      {/* <Album/> */}
+      {/* <Gallery/> */}
+      {/* <Jobs/> */}
+      {/* <Title/> */}
+      {/* <NestedGrid/> */}
       
     </div>
   );
