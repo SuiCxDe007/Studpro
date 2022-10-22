@@ -18,13 +18,8 @@ import Gallery from "./Components/Gallery";
 import Jobs from "./Components/Jobs";
 import Title from "./Components/title"
 import NestedGrid from "./Components/Mainsponsors";
-import Clock from "./Components/Countdown"
-
-
-import logo from './assets/images/logo.jpg';
 import Album from "./Components/Copyright";
-
-// import NavbarContainer from "./Components/NavbarContainer";
+import PauseOnHover from "./Components/CardScroll"
 
 function App() {
   
@@ -93,7 +88,7 @@ function App() {
         {/* <Navbar.Brand href="#home">Studpro 5.0</Navbar.Brand> */}
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="me-auto">
+        <Nav className="ml-auto">
           <Nav.Link href="#home">Home</Nav.Link>
           <NavDropdown href="#features" title= 'past events'>
             <NavDropdown.Item href="#action/3.1">Studpro 1.0</NavDropdown.Item>
@@ -114,12 +109,13 @@ function App() {
       
       
       
-      {/* <CarouselContainer/> */}
-      {/* <Album/> */}
-      {/* <Gallery/> */}
-      {/* <Jobs/> */}
-      {/* <Title/> */}
-      {/* <NestedGrid/> */}
+      <CarouselContainer/>
+      <Album/>
+      <Gallery/>
+      <Title/>
+      <NestedGrid/>
+      <PauseOnHover/>
+      
       
     </div>
   );
