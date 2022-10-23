@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect,useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -6,6 +6,18 @@ import 'slick-carousel/slick/slick-theme.css';
 import '../Components/CSS/cardscroll.css';
 import { dataDigitalBestSeller } from '../assets/data/data';
 import imgGirl from '../assets/images/Batman.png';
+
+import { db} from "../firebase-config";
+// import storage from './firebase';
+import {
+  collection,
+  getDocs,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
+
 
 function Cardscroll() {
   const [defaultImage, setDefaultImage] = useState({});
@@ -52,26 +64,37 @@ function Cardscroll() {
     }));
   };
 
+  const [companys, setCompanys] = useState([]); 
+
+    const CompanyColltectionRef  = collection(db,"Sponsors");
+
+    useEffect(() => {
+        
+        const getCompany = async () => {
+          const data = await getDocs(CompanyColltectionRef);
+          setCompanys(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+        };
+    
+        
+        getCompany();
+      }, [CompanyColltectionRef]);
+
   return (
     <div className="App">
       <Slider {...settings}>
-        {dataDigitalBestSeller.map((item) => (
+        {companys.map((item) => (
           <div className="card">
             <div className="card-top">
               <img
-                src={
-                  defaultImage[item.title] === item.title
-                    ? defaultImage.linkDefault
-                    : item.linkImg
-                }
-                alt={item.title}
+                src={item.logo}
+                alt={item.name}
                 onError={handleErrorImage}
               />
-              <h1>{item.title}</h1>
+              <h1>{item.name}</h1>
             </div>
             <div className="card-bottom">
-              <h3>{item.price}</h3>
-              <span className="category">{item.category}</span>
+              <h3>{item.years}</h3>
+              <span className="category">{item.details}</span>
             </div>
           </div>
         ))}

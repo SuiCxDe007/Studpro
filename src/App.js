@@ -16,7 +16,7 @@ import {
 import CarouselContainer from "./Components/CarouselContainer";
 import Gallery from "./Components/Gallery";
 import Jobs from "./Components/Jobs";
-import Title from "./Components/title"
+import Title from "./Components/Title"
 import NestedGrid from "./Components/Mainsponsors";
 import Album from "./Components/Copyright";
 import PauseOnHover from "./Components/CardScroll"
@@ -61,7 +61,7 @@ function App() {
     const getImages = async () => {
       const data = await getDocs(ImagesColltectionRef);
       setImages(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-      console.log(data);
+    
     };
 
     getUsers();
@@ -71,9 +71,8 @@ function App() {
 
   return (
     <div>
-      {/* <NavbarContainer/> */}
 
-      <Navbar bg="light" variant="light" className="navbar" collapseOnSelect expand="lg">
+      <Navbar bg="light" variant="light"  collapseOnSelect expand="lg">
         <Container>
         <Navbar.Brand href="#home">
         {images.map((item, idx) => (
@@ -85,24 +84,24 @@ function App() {
             alt="React Bootstrap logo"
           />))}
         </Navbar.Brand>
-        {/* <Navbar.Brand href="#home">Studpro 5.0</Navbar.Brand> */}
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="ml-auto">
+        <div className="navbar">
+        <Navbar.Toggle />
+
+        <Navbar.Collapse >
+        <Nav>
           <Nav.Link href="#home">Home</Nav.Link>
           <NavDropdown href="#features" title= 'past events'>
             <NavDropdown.Item href="#action/3.1">Studpro 1.0</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.2">Studpro 2.0</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.3">Studpro 3.0</NavDropdown.Item>
-            {/* <NavDropdown.Divider /> */}
             <NavDropdown.Item href="#action/3.4">Studpro 4.0</NavDropdown.Item>
           </NavDropdown>
           <Nav.Link href="#pricing">Job Opportunity</Nav.Link>     
           <Nav.Link href="#pricing">Contact us</Nav.Link>
           <Nav.Link href="#pricing">Gallery</Nav.Link>
-
         </Nav>
         </Navbar.Collapse>
+        </div>
         </Container>
         
       </Navbar>

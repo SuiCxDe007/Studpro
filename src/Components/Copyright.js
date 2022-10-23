@@ -130,9 +130,8 @@ function Album() {
               justifyContent="center"
             >
 
-              {/* <Button variant="contained">Main call to action</Button>
-              <Button variant="outlined">Secondary action</Button> */}
-            {participants.map((item, idx) => (
+              
+            {/* {participants.map((item, idx) => (
               <Grid item key={item.logo} xs={12} sm={6} md={4}>
               <Card sx={{ width: 300 , maxHeight: 345}} style={{ backgroundImage: `url(${item.image})`}}>
                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
@@ -164,14 +163,14 @@ function Album() {
                 <Button variant="contained" >{item.Button}</Button>
               </Box>
               </Card>
-              </Grid>))}
+              </Grid>))} */}
             </Stack>
           </Container>
         </Box>
 
-        <Divider>
+        {/* <Divider>
           <Chip label="Company Partnership" size= "medium" />
-        </Divider>
+        </Divider> */}
 
         <Container sx={{ py: 8 }} maxWidth="md">
           {/* End hero unit */}
@@ -207,22 +206,6 @@ function Album() {
           </Grid>
         </Container>
       </main>
-      {/* Footer */}
-      <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="text.secondary"
-          component="p"
-        >
-          Something here to give the footer a purpose!
-        </Typography>
-        <Copyright />
-      </Box>
-      {/* End footer */}
     </ThemeProvider>
   );
 }

@@ -12,9 +12,7 @@ import ImageListItem from '@mui/material/ImageListItem';
 
 import { db} from "../firebase-config";
 
-import image1 from './../assets/images/1.jpg';
-import image2 from './../assets/images/2.jpg';
-import image3 from './../assets/images/3.jpg';
+
 
 import {
   collection,
@@ -26,6 +24,20 @@ import {
 } from "firebase/firestore";
 
 const Gallery =() =>{
+  const [companys, setCompanys] = useState([]); 
+
+    const CompanyColltectionRef  = collection(db,"Sponsors");
+
+    useEffect(() => {
+        
+        const getCompany = async () => {
+          const data = await getDocs(CompanyColltectionRef);
+          setCompanys(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+        };
+    
+        
+        getCompany();
+      }, [CompanyColltectionRef]);
 
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -39,23 +51,12 @@ const Gallery =() =>{
 
     return(
       <div>
-      <Grid container spacing={2} columns={16}>
-        <Grid item xs={8}>
-          <Item>Amazing</Item>
-        </Grid>
-        <Grid item xs={8}>
-          <Item>Gallery</Item>
-        </Grid>
-      </Grid>
-      
-
-      
       <ImageList variant="masonry" cols={3} gap={8}>
-        {itemData.map((item) => (
-          <ImageListItem key={item.img}>
+        {companys.map((item) => (
+          <ImageListItem key={item.logo}>
             <img
-              src={`${item.img}?w=600&fit=crop&auto=format`}
-              srcSet={`${item.img}?w=600&fit=crop&auto=format&dpr=2 2x`}
+              src={`${item.logo}?w=600&fit=crop&auto=format`}
+              srcSet={`${item.logo}?w=600&fit=crop&auto=format&dpr=2 2x`}
               alt={item.title}
               loading="lazy"
             />
