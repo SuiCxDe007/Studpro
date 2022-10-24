@@ -81,7 +81,9 @@ function Cardscroll() {
 
   return (
     <div className="App">
+      
       <Slider {...settings}>
+        <div></div>
         {companys.map((item) => (
           <div className="card">
             <div className="card-top">

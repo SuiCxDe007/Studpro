@@ -20,6 +20,7 @@ import Title from "./Components/Title"
 import NestedGrid from "./Components/Mainsponsors";
 import Album from "./Components/Copyright";
 import PauseOnHover from "./Components/CardScroll"
+import Stat from "./Components/Stat"
 
 function App() {
   
@@ -108,12 +109,13 @@ function App() {
       
       
       
-      <CarouselContainer/>
+      {/* <CarouselContainer/>
       <Album/>
       <Gallery/>
       <Title/>
       <NestedGrid/>
-      <PauseOnHover/>
+      <PauseOnHover/> */}
+      <Stat/>
       
       
     </div>
