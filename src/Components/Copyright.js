@@ -100,39 +100,9 @@ function Album() {
       
       <main>
         {/* Hero unit */}
-        <Box
-          sx={{
-            bgcolor: 'background.paper',
-            pt: 8,
-            pb: 6,
-          }}
-        >
-          <Container maxWidth="sm">
-            <Typography
-              component="h1"
-              variant="h2"
-              align="center"
-              color="text.primary"
-              gutterBottom
-            >
-              StudPro 5.0
-            </Typography>
-            <Typography variant="h5" align="center" color="text.secondary" paragraph>
-            StudPro Career Fair was an initiative by Institute of Electrical and Electronics Engineers (IEEE) 
-            Young Professional Sri Lanka Section 2017 Executive Committee  to provide a platform for 
-            IEEE student members to expose their talent to the industries as well as to encourage the student 
-            members to continue their IEEE membership as Young Professionals. 
 
-            </Typography>
-            <Stack
-              sx={{ pt: 4 }}
-              direction="row"
-              spacing={2}
-              justifyContent="center"
-            >
-            </Stack>
-          </Container>
-        </Box>
+          <center><h1>  <span  style={{color: '#ec6c16'}}>Stud</span>Pro 5.0 Partners & Participant Companies </h1></center>
+
 
         <Container sx={{ py: 8 }} maxWidth="md">
           {/* End hero unit */}
@@ -143,7 +113,7 @@ function Album() {
                   
                 <CardActionArea>
                   <div className="chipContainer">
-                      <Chip variant="outlined" color="info" avatar={<Avatar style={{ color: "Black", backgroundColor: "#ec7c2c" }} >{item.years}</Avatar>} label="Years with us"  />
+                      <Chip variant="outlined" color="info" avatar={<Avatar style={{ color: "Black", backgroundColor: "#ec7c2c" }} >{item.years}</Avatar>} label="Year(s) with us"  />
                   </div> 
                   <CardMedia
                     component="img"
@@ -156,7 +126,7 @@ function Album() {
                     <Typography gutterBottom variant="h5" component="div" align="center">
                       {item.name}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" align="center" color="text.secondary">
                       {item.details}
                     </Typography>
                   </CardContent>
