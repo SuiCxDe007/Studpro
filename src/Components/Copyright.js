@@ -91,9 +91,8 @@ function Album() {
         };
     
         getParticipants();
-        getCompany();
-      }, [CompanyColltectionRef,ParticipantColltectionRef]);
-
+        getCompany()
+      }, []);
       
   return (
     <ThemeProvider theme={theme}>
