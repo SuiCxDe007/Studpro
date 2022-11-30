@@ -116,12 +116,14 @@ function Album() {
               color="text.primary"
               gutterBottom
             >
-              Studpro 5.0
+              StudPro 5.0
             </Typography>
             <Typography variant="h5" align="center" color="text.secondary" paragraph>
-              Something short and leading about the collection below—its contents,
-              the creator, etc. Make it short and sweet, but not too short so folks
-              don&apos;t simply skip over it entirely.
+            StudPro Career Fair was an initiative by Institute of Electrical and Electronics Engineers (IEEE) 
+            Young Professional Sri Lanka Section 2017 Executive Committee  to provide a platform for 
+            IEEE student members to expose their talent to the industries as well as to encourage the student 
+            members to continue their IEEE membership as Young Professionals. 
+
             </Typography>
             <Stack
               sx={{ pt: 4 }}
@@ -129,48 +131,9 @@ function Album() {
               spacing={2}
               justifyContent="center"
             >
-
-              
-            {/* {participants.map((item, idx) => (
-              <Grid item key={item.logo} xs={12} sm={6} md={4}>
-              <Card sx={{ width: 300 , maxHeight: 345}} style={{ backgroundImage: `url(${item.image})`}}>
-                <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                <CardContent sx={{ flex: '1 0 auto' }}>
-                  
-                  <Typography component="div" variant="h5" align="center">
-                    {item.Name}
-                  </Typography>
-                  <div>
-                  <Typography variant="subtitle1" color="blue" component="div" sx={{ fontWeight: 'bold',height:40, mb:3 }} align="center">
-                    {item.Question}
-                  </Typography>
-                  </div>
-                  <Divider />
-                  <Typography component="div" variant="p" align="center">
-                    {item.Field1}
-                  </Typography>
-                  <Divider/>
-                  <Typography component="div" variant="p" align="center" >
-                    {item.Field2}
-                  </Typography>
-                  <Divider/>
-                  <Typography component="div" variant="p" align="center">
-                    {item.Field3}
-                  </Typography>
-
-                </CardContent>
-                
-                <Button variant="contained" >{item.Button}</Button>
-              </Box>
-              </Card>
-              </Grid>))} */}
             </Stack>
           </Container>
         </Box>
-
-        {/* <Divider>
-          <Chip label="Company Partnership" size= "medium" />
-        </Divider> */}
 
         <Container sx={{ py: 8 }} maxWidth="md">
           {/* End hero unit */}
@@ -181,7 +144,7 @@ function Album() {
                   
                 <CardActionArea>
                   <div className="chipContainer">
-                      <Chip variant="outlined" color="info" avatar={<Avatar>{item.years}</Avatar>} label="Years with us"  />
+                      <Chip variant="outlined" color="info" avatar={<Avatar style={{ color: "Black", backgroundColor: "#ec7c2c" }} >{item.years}</Avatar>} label="Years with us"  />
                   </div> 
                   <CardMedia
                     component="img"
