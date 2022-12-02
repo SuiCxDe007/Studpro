@@ -2,7 +2,6 @@ import CarouselContainer from "../Components/CarouselContainer";
 import Grid from '@mui/material/Grid';
 import Gallery from "../Components/Gallery";
 import Jobs from "../Components/Jobs";
-import Title from "../Components/Title"
 import NestedGrid from "../Components/Mainsponsors";
 import Album from "../Components/Copyright";
 import PauseOnHover from "../Components/CardScroll"
@@ -34,6 +33,9 @@ function Home() {
             <Album/>
             <Title/> 
             <Stat/>
+            <Album/>
+            {/*<NestedGrid/> */}
+
         </div>
     )
 }

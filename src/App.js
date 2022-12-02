@@ -52,10 +52,11 @@ function App() {
     
     };
 
+
     getUsers();
     getCompany();
     getImages();
-  }, [usersCollectionRef,CompanyColltectionRef,ImagesColltectionRef]);
+  }, []);
 
   return (
     <div>
@@ -66,10 +67,9 @@ function App() {
         {images.map((item, idx) => (
           <img
             src={item.Studprologo}
-            width="130"
-            height="70"
+            width="120"
+            height="40"
             className="d-inline-block align-top"
-            alt="React Bootstrap logo"
           />))}
         </Navbar.Brand>
         <div className="navbar">
@@ -78,12 +78,12 @@ function App() {
         <Navbar.Collapse >
         <Nav>
           <Nav.Link href="/">Home</Nav.Link>
-          <NavDropdown href="#features" title= 'past events'>
-            <NavDropdown.Item href="/Studpro1">Studpro 1.0</NavDropdown.Item>
-            <NavDropdown.Item href="/Studpro2">Studpro 2.0</NavDropdown.Item>
-            <NavDropdown.Item href="/Studpro3">Studpro 3.0</NavDropdown.Item>
-            <NavDropdown.Item href="/Studpro4">Studpro 4.0</NavDropdown.Item>
-          </NavDropdown>
+          {/*<NavDropdown href="#features" title= 'past events'>*/}
+          {/*  <NavDropdown.Item href="/Studpro1">Studpro 1.0</NavDropdown.Item>*/}
+          {/*  <NavDropdown.Item href="/Studpro2">Studpro 2.0</NavDropdown.Item>*/}
+          {/*  <NavDropdown.Item href="/Studpro3">Studpro 3.0</NavDropdown.Item>*/}
+          {/*  <NavDropdown.Item href="/Studpro4">Studpro 4.0</NavDropdown.Item>*/}
+          {/*</NavDropdown>*/}
           <Nav.Link href="/Gallery">Gallery</Nav.Link>
         </Nav>
         </Navbar.Collapse>
@@ -95,10 +95,10 @@ function App() {
       <Routes>
           <Route path="/" element ={<Home/>} />
           <Route path="/Gallery" element={<Gallerypage/>} />
-          <Route path="/Studpro1" element={<Studpro1/>} />
-          <Route path="/Studpro2" element={<Studpro2/>} />
-          <Route path="/Studpro3" element={<Studpro3/>} />
-          <Route path="/Studpro4" element={<Studpro4/>} />
+          {/*<Route path="/Studpro1" element={<Studpro1/>} />*/}
+          {/*<Route path="/Studpro2" element={<Studpro2/>} />*/}
+          {/*<Route path="/Studpro3" element={<Studpro3/>} />*/}
+          {/*<Route path="/Studpro4" element={<Studpro4/>} />*/}
         </Routes>
       </Router>
       

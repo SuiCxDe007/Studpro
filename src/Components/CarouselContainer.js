@@ -61,8 +61,8 @@ const CarouselContainer =() =>{
               alt="First slide"
             />
             <Carousel.Caption>
-              <h5>{item.Header}</h5>
-              <p>{item.Description}</p>
+              <h5></h5>
+              <p></p>
             </Carousel.Caption>
           </Carousel.Item>
 
