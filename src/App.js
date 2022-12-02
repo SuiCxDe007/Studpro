@@ -66,8 +66,8 @@ function App() {
         {images.map((item, idx) => (
           <img
             src={item.Studprologo}
-            width="120"
-            height="50"
+            width="130"
+            height="70"
             className="d-inline-block align-top"
             alt="React Bootstrap logo"
           />))}
