@@ -26,7 +26,7 @@ import {
 const Gallery =() =>{
   const [companys, setCompanys] = useState([]); 
 
-    const CompanyColltectionRef  = collection(db,"Sponsors");
+    const CompanyColltectionRef  = collection(db,"Gallery");
 
     useEffect(() => {
         
@@ -55,8 +55,8 @@ const Gallery =() =>{
         {companys.map((item) => (
           <ImageListItem key={item.logo}>
             <img
-              src={`${item.logo}?w=600&fit=crop&auto=format`}
-              srcSet={`${item.logo}?w=600&fit=crop&auto=format&dpr=2 2x`}
+              src={`${item.Images}?w=600&fit=crop&auto=format`}
+              srcSet={`${item.Images}?w=600&fit=crop&auto=format&dpr=2 2x`}
               alt={item.title}
               loading="lazy"
             />
