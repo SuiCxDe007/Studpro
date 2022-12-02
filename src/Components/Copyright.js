@@ -19,7 +19,7 @@ import Link from '@mui/material/Link';
 import Divider from '@mui/material/Divider';
 import Chip from '@mui/material/Chip';
 import { Avatar } from '@mui/material';
-
+import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
@@ -100,6 +100,16 @@ function Album() {
       
       <main>
         {/* Hero unit */}
+
+        <Typography
+              component="h1"
+              variant="h2"
+              align="center"
+              color="text.primary"
+              gutterBottom
+            >
+        <HorizontalRuleIcon sx={{fontSize: 60, Width:"md" }}> </HorizontalRuleIcon>
+        </Typography>
 
           <center><h1>  <span  style={{color: '#ec6c16'}}>Stud</span>Pro 5.0 Partners & Participant Companies </h1></center>
 

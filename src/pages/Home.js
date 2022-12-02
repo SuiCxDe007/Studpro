@@ -12,13 +12,13 @@ import SilverPart from "../Components/SilverPart";
 import BronzePart from "../Components/BronzePart";
 import TechPart from "../Components/TechPart";
 import DigitalPart from "../Components/DigitalPart";
-
+import Title from "../Components/Title";
 
 function Home() {
     return(
         <div>
             <CarouselContainer/>
-            <PlatinumPart/>
+            {/* <PlatinumPart/>
             <GoldPart/>
             <SilverPart/>
             <BronzePart/>
@@ -29,12 +29,11 @@ function Home() {
                 <Grid item xs={8}>
                 <DigitalPart/>
                 </Grid>
-            </Grid>
+            </Grid> */}
             <Album/>
             <Title/> 
             <Stat/>
-            <Album/>
-            {/*<NestedGrid/> */}
+            {/* <Album/> */}
 
         </div>
     )

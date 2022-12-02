@@ -11,7 +11,34 @@ import Chip from '@mui/material/Chip';
 import { Avatar } from '@mui/material'
 import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
 
+import { db} from "../firebase-config";
+import { useState, useEffect } from "react";
+import {
+  collection,
+  getDocs,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
+
+
 function Title() {
+  const [companys, setCompanys] = useState([]);
+  
+
+    const CompanyColltectionRef  = collection(db,"WhyStudPro");
+  
+
+    useEffect(() => {
+        
+        const getCompany = async () => {
+          const data = await getDocs(CompanyColltectionRef);
+          setCompanys(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+        };
+        getCompany()
+      }, []);
+
   return(
     <div>
       <Typography
@@ -30,7 +57,7 @@ function Title() {
               color="text.primary"
               gutterBottom
             >
-            <HorizontalRuleIcon sx={{fontSize: 60, Width:"md" }}></HorizontalRuleIcon>
+            <HorizontalRuleIcon sx={{fontSize: 60, Width:"md" }}> </HorizontalRuleIcon>
             </Typography>
      <Container sx={{ py: 3  }} maxWidth="md">
           {/* End hero unit */}
@@ -43,16 +70,13 @@ function Title() {
                   <CardMedia
                     component="img"
                     height="200"
-                    image={item.img}
+                    image={item.logo}
                     alt="green iguana"
                   />
                   <CardContent>
                   
                     <Typography gutterBottom variant="h5" component="div" align="center">
-                      {item.title}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {item.details}
+                      {item.name}
                     </Typography>
                   </CardContent>
                 </CardActionArea>
@@ -67,21 +91,5 @@ function Title() {
     
   );
 }
-
-const companys = [
-  {
-    img: 'https://firebasestorage.googleapis.com/v0/b/website-3feaf.appspot.com/o/WhyStudpro%2Fdesign.png?alt=media&token=cf0bbf24-28a6-4ea9-ae01-d91852df2c23',
-    title: 'Reason 1',
-  },
-  {
-    img: 'https://firebasestorage.googleapis.com/v0/b/website-3feaf.appspot.com/o/WhyStudpro%2Fdesign.png?alt=media&token=cf0bbf24-28a6-4ea9-ae01-d91852df2c23',
-    title: 'Reason 2',
-  },
-  {
-    img: 'https://firebasestorage.googleapis.com/v0/b/website-3feaf.appspot.com/o/WhyStudpro%2Fdesign.png?alt=media&token=cf0bbf24-28a6-4ea9-ae01-d91852df2c23',
-    title: 'Resaon 3',
-  },
-];
-
 
 export default Title;
