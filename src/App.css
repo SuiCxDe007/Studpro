@@ -62,3 +62,75 @@
   max-width: 250px;
   align-items: center;
 }
+
+.chipContainer{
+  height: 100%;
+  display: flex;
+  align-items: right;
+  justify-content: right;
+  padding-top: 10px;
+  padding-right: 10px;
+}
+.CARD_STYLE{
+  height: "200px";
+  width: "230px";
+  padding-top: "0px";
+  text-align: "center";
+  background: "#52C0F5";
+  color: "";
+  font-family: "sans-serif";
+  font-size: "12px";
+  text-transform: "uppercase";
+  border-radius: "10px";
+  box-sizing: "border-box";
+}
+
+.CONTAINER_STYLE{
+  height: "100vh";
+  width: "100%";
+  display: "flex";
+  flex: 1;
+  justify-content: "center";
+  align-items: "middle"
+}
+
+
+.font-loader {
+  font-family: 'Chilanka';
+}
+
+
+.clock {
+  position: relative;
+  margin: a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(270deg, #05181700, #0e383900);
+  height: 180px;
+  width: 360px;
+  color: #06f1f6;
+  text-shadow: 1px 1px 7px;
+  border-radius: 15px;
+  border: 2px solid rgba(192, 192, 192, 0);
+  box-shadow: 0 0 5px 25px;
+}
+
+.clock section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+.clock section p {
+  font-size: 4rem;
+}
+.clock section small {
+  color: silver;
+  text-shadow: none;
+}
+
+.Navbar{
+  justify-content: flex-end;
+}

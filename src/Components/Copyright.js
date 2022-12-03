@@ -16,6 +16,11 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
+import Divider from '@mui/material/Divider';
+import Chip from '@mui/material/Chip';
+import { Avatar } from '@mui/material';
+import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
+
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
@@ -68,9 +73,11 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const theme = createTheme();
 function Album() {
 
-  const [companys, setCompanys] = useState([]); 
+  const [companys, setCompanys] = useState([]);
+  const [participants, setParticipants] = useState([]);
 
     const CompanyColltectionRef  = collection(db,"Sponsors");
+    const ParticipantColltectionRef = collection(db,"Participant");
 
     useEffect(() => {
         
@@ -78,56 +85,46 @@ function Album() {
           const data = await getDocs(CompanyColltectionRef);
           setCompanys(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
         };
+        const getParticipants = async () => {
+          const data = await getDocs(ParticipantColltectionRef);
+          setParticipants(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+        };
     
-        
-        getCompany();
-      }, [CompanyColltectionRef]);
+        getParticipants();
+        getCompany()
+      }, []);
+      
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       
       <main>
         {/* Hero unit */}
-        <Box
-          sx={{
-            bgcolor: 'background.paper',
-            pt: 8,
-            pb: 6,
-          }}
-        >
-          <Container maxWidth="sm">
-            <Typography
+
+        <Typography
               component="h1"
               variant="h2"
               align="center"
               color="text.primary"
               gutterBottom
             >
-              Studpro 5.0
-            </Typography>
-            <Typography variant="h5" align="center" color="text.secondary" paragraph>
-              Something short and leading about the collection below—its contents,
-              the creator, etc. Make it short and sweet, but not too short so folks
-              don&apos;t simply skip over it entirely.
-            </Typography>
-            <Stack
-              sx={{ pt: 4 }}
-              direction="row"
-              spacing={2}
-              justifyContent="center"
-            >
-              <Button variant="contained">Main call to action</Button>
-              <Button variant="outlined">Secondary action</Button>
-            </Stack>
-          </Container>
-        </Box>
+        <HorizontalRuleIcon sx={{fontSize: 60, Width:"md" }}> </HorizontalRuleIcon>
+        </Typography>
+
+          <center><h1>  <span  style={{color: '#ec6c16'}}>Stud</span>Pro 5.0 Partners & Participant Companies </h1></center>
+
+
         <Container sx={{ py: 8 }} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
             {companys.map((item, idx) => (
               <Grid item key={item.logo} xs={12} sm={6} md={4}>
                 <Card sx={{ maxWidth: 345 }}>
+                  
                 <CardActionArea>
+                  <div className="chipContainer">
+                      <Chip variant="outlined" color="info" avatar={<Avatar style={{ color: "Black", backgroundColor: "#ec7c2c" }} >{item.years}</Avatar>} label="Year(s) with us"  />
+                  </div> 
                   <CardMedia
                     component="img"
                     height="200"
@@ -135,10 +132,11 @@ function Album() {
                     alt="green iguana"
                   />
                   <CardContent>
+                  
                     <Typography gutterBottom variant="h5" component="div" align="center">
                       {item.name}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" align="center" color="text.secondary">
                       {item.details}
                     </Typography>
                   </CardContent>
@@ -150,22 +148,6 @@ function Album() {
           </Grid>
         </Container>
       </main>
-      {/* Footer */}
-      <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="text.secondary"
-          component="p"
-        >
-          Something here to give the footer a purpose!
-        </Typography>
-        <Copyright />
-      </Box>
-      {/* End footer */}
     </ThemeProvider>
   );
 }

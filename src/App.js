@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Container, Navbar,Nav, NavDropdown } from 'react-bootstrap';
-
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import "./App.css";
 import { db} from "./firebase-config";
 // import storage from './firebase';
@@ -13,16 +13,15 @@ import {
   doc,
 } from "firebase/firestore";
 
-import CarouselContainer from "./Components/CarouselContainer";
-import { FooterContainer } from './Components/footer'
-// import CompanyCards from "./Components/CompanyCards";
 
 
+import Home from "./pages/Home";
+import Gallerypage from "./pages/Gallerypage";
+import Studpro1 from "./pages/Studpro1";
+import Studpro2 from "./pages/Studpro2";
+import Studpro3 from "./pages/Studpro3";
+import Studpro4 from "./pages/Studpro4";
 
-import logo from './assets/images/logo.jpg';
-import Album from "./Components/Copyright";
-
-// import NavbarContainer from "./Components/NavbarContainer";
 
 function App() {
   
@@ -31,24 +30,12 @@ function App() {
 
   const [users, setUsers] = useState([]);
   const [companys, setCompanys] = useState([]);
+  const [images, setImages] = useState([]);
 
   const usersCollectionRef = collection(db, "users");
   const CompanyColltectionRef  = collection(db,"Sponsors");
+  const ImagesColltectionRef  = collection(db,"Images");
 
-  const createUser = async () => {
-    await addDoc(usersCollectionRef, { name: newName, age: Number(newAge) });
-  };
-
-  const updateUser = async (id, age) => {
-    const userDoc = doc(db, "users", id);
-    const newFields = { age: age + 1 };
-    await updateDoc(userDoc, newFields);
-  };
-
-  const deleteUser = async (id) => {
-    const userDoc = doc(db, "users", id);
-    await deleteDoc(userDoc);
-  };
 
   useEffect(() => {
     const getUsers = async () => {
@@ -59,44 +46,62 @@ function App() {
       const data = await getDocs(CompanyColltectionRef);
       setCompanys(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
+    const getImages = async () => {
+      const data = await getDocs(ImagesColltectionRef);
+      setImages(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    
+    };
+
 
     getUsers();
     getCompany();
-  }, [usersCollectionRef,CompanyColltectionRef]);
+    getImages();
+  }, []);
 
   return (
     <div>
-      {/* <NavbarContainer/> */}
 
-      <Navbar bg="light" variant="light">
+      <Navbar bg="light" variant="light"  collapseOnSelect expand="lg">
         <Container>
         <Navbar.Brand href="#home">
+        {images.map((item, idx) => (
           <img
-            src={logo}
-            width="40"
+            src={item.Studprologo}
+            width="120"
             height="40"
             className="d-inline-block align-top"
-            alt="React Bootstrap logo"
-          />
+          />))}
         </Navbar.Brand>
-        <Navbar.Brand href="#home">Studpro 5.0</Navbar.Brand>
-        <Nav className="me-auto">
-          <Nav.Link href="#home">About Us</Nav.Link>
-          <NavDropdown href="#features" title= 'past events'>
-            <NavDropdown.Item href="#action/3.1">Studpro 1.0</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2">Studpro 2.0</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">Studpro 3.0</NavDropdown.Item>
-            {/* <NavDropdown.Divider /> */}
-            <NavDropdown.Item href="#action/3.4">Studpro 4.0</NavDropdown.Item>
-          </NavDropdown>        
-          <Nav.Link href="#pricing">Contact us</Nav.Link>
-        </Nav>
-        </Container>
-      </Navbar>
+        <div className="navbar">
+        <Navbar.Toggle />
 
-      <CarouselContainer/>
-      <Album/>
-      <FooterContainer />
+        <Navbar.Collapse >
+        <Nav>
+          <Nav.Link href="/">Home</Nav.Link>
+          {/*<NavDropdown href="#features" title= 'past events'>*/}
+          {/*  <NavDropdown.Item href="/Studpro1">Studpro 1.0</NavDropdown.Item>*/}
+          {/*  <NavDropdown.Item href="/Studpro2">Studpro 2.0</NavDropdown.Item>*/}
+          {/*  <NavDropdown.Item href="/Studpro3">Studpro 3.0</NavDropdown.Item>*/}
+          {/*  <NavDropdown.Item href="/Studpro4">Studpro 4.0</NavDropdown.Item>*/}
+          {/*</NavDropdown>*/}
+          <Nav.Link href="/Gallery">Gallery</Nav.Link>
+        </Nav>
+        </Navbar.Collapse>
+        </div>
+        </Container>
+        
+      </Navbar>
+      <Router>
+      <Routes>
+          <Route path="/" element ={<Home/>} />
+          <Route path="/Gallery" element={<Gallerypage/>} />
+          {/*<Route path="/Studpro1" element={<Studpro1/>} />*/}
+          {/*<Route path="/Studpro2" element={<Studpro2/>} />*/}
+          {/*<Route path="/Studpro3" element={<Studpro3/>} />*/}
+          {/*<Route path="/Studpro4" element={<Studpro4/>} />*/}
+        </Routes>
+      </Router>
+      
     </div>
   );
 }

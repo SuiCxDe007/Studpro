@@ -3,6 +3,13 @@ import {Carousel} from 'react-bootstrap';
 import '../App.css';
 import { useState, useEffect } from "react";
 
+
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { CardActionArea } from '@mui/material'
+
 import { db} from "../firebase-config";
 
 import image1 from './../assets/images/1.jpg';
@@ -36,47 +43,34 @@ const CarouselContainer =() =>{
 
 
     return(
-        <Carousel controls={false} fade = {true} pause = {false} >
-        {/* const links = (this.props.link); */}
-        {carousel.map((item, idx) => (
-          <Carousel.Item interval={2000}>
-          <img
-            className="d-block w-100"
-            src={item.image}
-            alt="First slide"
-          />
-          <Carousel.Caption>
-            <h5>First slide label</h5>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
+      <div>
+        {/* <div  style={{ position: 'relative', zIndex: '1090' }}>
+          <h1>manji
+          </h1>
+        </div> */}
 
-        ))},
-        
-        {/* <Carousel.Item interval={2000}>
-          <img
-            className="d-block w-100"
-            src={image2}
-            alt="Second slide"
-          />
-          <Carousel.Caption>
-            <h5>Second slide label</h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item interval={2000}>
-          <img
-            className="d-block w-100"
-            src={image3}
-            alt="Third slide"
-          />
-          <Carousel.Caption>
-            <h5>Third slide label</h5>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-          </Carousel.Caption>
-        </Carousel.Item> */}
-      </Carousel>  
-        
+
+
+        <div style={{ position: 'relative', zIndex: '-1' }}>
+          <Carousel controls={false} fade = {true} pause = {false} >
+          {carousel.map((item, idx) => (
+            <Carousel.Item interval={2000}>
+            <img
+              className="d-block w-100"
+              src={item.image}
+              alt="First slide"
+            />
+            <Carousel.Caption>
+              <h5></h5>
+              <p></p>
+            </Carousel.Caption>
+          </Carousel.Item>
+
+          ))},
+
+        </Carousel>  
+      </div> 
+      </div>  
     )
 
 }
