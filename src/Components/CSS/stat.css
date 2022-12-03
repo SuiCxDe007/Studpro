@@ -1,0 +1,29 @@
+.row {
+    display: flex;
+  }
+  
+
+
+  .columnpic{
+    flex: 40%;
+  }
+
+  .columndes{
+    flex: 60%;
+  }
+
+  .image{
+    text-align: right;
+    margin-top: 30px;
+  }
+
+  .description{
+    text-align: center;
+    padding: 10%;
+    margin: auto;
+    flex: 100%
+  }
+
+  .title{
+
+  }
