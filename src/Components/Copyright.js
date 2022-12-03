@@ -18,7 +18,8 @@ import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import Divider from '@mui/material/Divider';
 import Chip from '@mui/material/Chip';
-
+import { Avatar } from '@mui/material';
+import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
@@ -90,9 +91,8 @@ function Album() {
         };
     
         getParticipants();
-        getCompany();
-      }, [CompanyColltectionRef,ParticipantColltectionRef]);
-
+        getCompany()
+      }, []);
       
   return (
     <ThemeProvider theme={theme}>
@@ -100,77 +100,19 @@ function Album() {
       
       <main>
         {/* Hero unit */}
-        <Box
-          sx={{
-            bgcolor: 'background.paper',
-            pt: 8,
-            pb: 6,
-          }}
-        >
-          <Container maxWidth="sm">
-            <Typography
+
+        <Typography
               component="h1"
               variant="h2"
               align="center"
               color="text.primary"
               gutterBottom
             >
-              Studpro 5.0
-            </Typography>
-            <Typography variant="h5" align="center" color="text.secondary" paragraph>
-              Something short and leading about the collection below—its contents,
-              the creator, etc. Make it short and sweet, but not too short so folks
-              don&apos;t simply skip over it entirely.
-            </Typography>
-            <Stack
-              sx={{ pt: 4 }}
-              direction="row"
-              spacing={2}
-              justifyContent="center"
-            >
+        <HorizontalRuleIcon sx={{fontSize: 60, Width:"md" }}> </HorizontalRuleIcon>
+        </Typography>
 
-              {/* <Button variant="contained">Main call to action</Button>
-              <Button variant="outlined">Secondary action</Button> */}
-            {participants.map((item, idx) => (
-              <Grid item key={item.logo} xs={12} sm={6} md={4}>
-              <Card sx={{ width: 300 , maxHeight: 345}} style={{ backgroundImage: `url(${item.image})`}}>
-                <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                <CardContent sx={{ flex: '1 0 auto' }}>
-                  
-                  <Typography component="div" variant="h5" align="center">
-                    {item.Name}
-                  </Typography>
-                  <div>
-                  <Typography variant="subtitle1" color="blue" component="div" sx={{ fontWeight: 'bold',height:40, mb:3 }} align="center">
-                    {item.Question}
-                  </Typography>
-                  </div>
-                  <Divider />
-                  <Typography component="div" variant="p" align="center">
-                    {item.Field1}
-                  </Typography>
-                  <Divider/>
-                  <Typography component="div" variant="p" align="center" >
-                    {item.Field2}
-                  </Typography>
-                  <Divider/>
-                  <Typography component="div" variant="p" align="center">
-                    {item.Field3}
-                  </Typography>
+          <center><h1>  <span  style={{color: '#ec6c16'}}>Stud</span>Pro 5.0 Partners & Participant Companies </h1></center>
 
-                </CardContent>
-                
-                <Button variant="contained" >{item.Button}</Button>
-              </Box>
-              </Card>
-              </Grid>))}
-            </Stack>
-          </Container>
-        </Box>
-
-        <Divider>
-          <Chip label="Company Partnership" size= "medium" />
-        </Divider>
 
         <Container sx={{ py: 8 }} maxWidth="md">
           {/* End hero unit */}
@@ -178,7 +120,11 @@ function Album() {
             {companys.map((item, idx) => (
               <Grid item key={item.logo} xs={12} sm={6} md={4}>
                 <Card sx={{ maxWidth: 345 }}>
+                  
                 <CardActionArea>
+                  <div className="chipContainer">
+                      <Chip variant="outlined" color="info" avatar={<Avatar style={{ color: "Black", backgroundColor: "#ec7c2c" }} >{item.years}</Avatar>} label="Year(s) with us"  />
+                  </div> 
                   <CardMedia
                     component="img"
                     height="200"
@@ -186,10 +132,11 @@ function Album() {
                     alt="green iguana"
                   />
                   <CardContent>
+                  
                     <Typography gutterBottom variant="h5" component="div" align="center">
                       {item.name}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" align="center" color="text.secondary">
                       {item.details}
                     </Typography>
                   </CardContent>
@@ -201,22 +148,6 @@ function Album() {
           </Grid>
         </Container>
       </main>
-      {/* Footer */}
-      <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="text.secondary"
-          component="p"
-        >
-          Something here to give the footer a purpose!
-        </Typography>
-        <Copyright />
-      </Box>
-      {/* End footer */}
     </ThemeProvider>
   );
 }
