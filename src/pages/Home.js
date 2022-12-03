@@ -9,7 +9,6 @@ import Stat from "../Components/Stat";
 import PlatinumPart from "../Components/PlatinumPart";
 import GoldPart from "../Components/GoldPart";
 import SilverPart from "../Components/SilverPart";
-import BronzePart from "../Components/BronzePart";
 import TechPart from "../Components/TechPart";
 import DigitalPart from "../Components/DigitalPart";
 import Title from "../Components/Title";
